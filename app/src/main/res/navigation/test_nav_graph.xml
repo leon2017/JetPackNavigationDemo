@@ -11,7 +11,7 @@
             android:label="fragment_test_1"
             tools:layout="@layout/fragment_test_1">
 
-        <action android:id="@+id/action_test2"
+        <action android:id="@+id/action_test1_to_test2"
                 app:destination="@id/test2"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
@@ -27,13 +27,44 @@
             android:id="@+id/test2"
             android:name="com.navigationdemo.app.Test2Fragment"
             android:label="fragment_test_2"
-            tools:layout="@layout/fragment_test_2"/>
+            tools:layout="@layout/fragment_test_2">
+
+        <action android:id="@+id/action_test2_to_test3"
+                app:destination="@id/test3"/>
+
+        <argument android:name="paramsB"
+                  app:argType="string"
+                  app:nullable="true"
+                  android:defaultValue="Hello World !!!"/>
+
+    </fragment>
 
     <fragment
             android:id="@+id/test3"
             android:name="com.navigationdemo.app.Test3Fragment"
             android:label="fragment_test_3"
-            tools:layout="@layout/fragment_test_3"/>
+            tools:layout="@layout/fragment_test_3">
+
+        <argument android:name="paramsC"
+                  app:argType="string"
+                  app:nullable="true"
+                  android:defaultValue="Hello World !!!"/>
+
+        <!--选中"autoVerify"以要求Google验证你是URI的所有者-->
+        <deepLink android:id="@+id/deepLink"
+                  app:uri="www.github.com/kaixueio"
+                  android:autoVerify="true"/>
+
+        <deepLink android:id="@+id/deepLink2"
+                  app:uri="aixueio-android://path/subpath/{data}"/>
+
+        <action android:id="@+id/action_test3_to_test1"
+                app:destination="@id/test1"/>
+
+        <action android:id="@+id/action_test3_to_test2"
+                app:destination="@id/test2"/>
+
+    </fragment>
 
 
 </navigation>

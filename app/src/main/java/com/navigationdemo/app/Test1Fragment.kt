@@ -1,12 +1,13 @@
 package com.navigationdemo.app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 
 /**
  * 当前类注释:
@@ -30,8 +31,13 @@ class Test1Fragment : Fragment() {
     private fun initEvent(view: View) {
         val btnStartTest2 = view.findViewById<AppCompatButton>(R.id.btn)
         btnStartTest2.setOnClickListener {
-            Navigation.findNavController(btnStartTest2).navigate(R.id.action_test2)
-//            NavHostFragment.findNavController(this).navigate(R.id.action_test2)
+//            Navigation.findNavController(btnStartTest2).navigate(R.id.action_test1_to_test2)
+            NavHostFragment.findNavController(this).navigate(R.id.action_test1_to_test2)
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("Test1Fragment","onCreate")
     }
 }
